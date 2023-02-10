@@ -41,6 +41,20 @@ async function main() {
   // const sentTxResponse = await wallet.sendTransaction(tx);
   // await sentTxResponse.wait(1);
   // console.log(sentTxResponse);
+
+  // calling retrieve()
+  const currentFavNumber = await contract.retrieve();
+  console.log(`Current Favorite Number is ${currentFavNumber.toString()}`);
+
+  // calling store()
+  const txResponse = await contract.store("100");
+  console.log("Transaction Response");
+  console.log(txResponse);
+  const txReceipt = await txResponse.wait(1);
+  console.log("Transaction Receipt");
+  console.log(txReceipt);
+  const updatedFavNumber = await contract.retrieve();
+  console.log(`Updated Favorite Number is ${updatedFavNumber.toString()}`);
 }
 
 main()
