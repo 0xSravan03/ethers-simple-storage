@@ -3,9 +3,11 @@ const fs = require("fs-extra")
 require("dotenv").config()
 
 async function main() {
-    const provider = new ethers.providers.JsonRpcProvider(process.env.RPC_URL) // Ganache Blockchain
+    const provider = new ethers.providers.JsonRpcProvider(
+        process.env.RPC_URL_GOERLI
+    )
 
-    const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
+    const wallet = new ethers.Wallet(process.env.PRIVATE_KEY_GOERLI, provider)
 
     const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf8")
     const binary = fs.readFileSync(
